@@ -1,0 +1,25 @@
+const users = ['Abilton',
+    'Josue',
+    'Kaleb',
+    'Natalia']
+
+app.get('/users', (req, res) => {
+
+    const search = String(req.query.search);
+    const userFilt = search ? users.filter(user => user.includes(search)) : 'Não deu certo';
+
+    return res.json(userFilt);
+})
+
+app.get('/users/:id', (req, res) => {
+    const id = Number(req.params.id);
+
+    res.json(users[id]);
+})
+
+
+app.post('/users', (req, res) => {
+    const data = req.body;
+    console.log(data);
+    return res.json(data);
+})
